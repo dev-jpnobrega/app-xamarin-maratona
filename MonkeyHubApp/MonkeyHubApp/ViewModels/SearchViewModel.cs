@@ -11,7 +11,7 @@ using Xamarin.Forms;
 namespace MonkeyHubApp.ViewModels
 {
     public class SearchViewModel: BaseViewModel
-    {
+    {  
 
         private readonly IMonkeyHubApiService _monkeyHubApiService;
         private string _searchTerm;

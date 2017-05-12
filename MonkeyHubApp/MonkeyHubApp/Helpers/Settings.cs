@@ -37,7 +37,13 @@ namespace MonkeyHubApp.Helpers
                 AppSettings.AddOrUpdateValue<string>(UserIdKey, value);
             }
         }
-                
+         
+        
+        public static string TokenAuthFacebook
+        {
+            get; set;
+        }
+
         public static bool IsLoggedIn => !string.IsNullOrWhiteSpace(UserId);
     }
 }

@@ -32,7 +32,7 @@ namespace MonkeyHubApp.ViewModels
         
         async void ExecuteAboutCommand()
         {
-            await PushAsync<ViewModels.AboutViewModel>();
+            await PushAsync<AboutViewModel>();
         }
 
         async void ExecuteSearchCommand()
@@ -42,7 +42,7 @@ namespace MonkeyHubApp.ViewModels
         
         async void ExecuteShowCategoriaCommand(Tag tag)
         {
-            await PushAsync<ViewModels.CategoriaViewModel>(_iMonkeyHubApiService, tag);
+            await PushAsync<CategoriaViewModel>(_iMonkeyHubApiService, tag);
         }
 
 

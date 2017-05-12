@@ -20,6 +20,7 @@ namespace MonkeyHubApp.ViewModels
         }
                 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName]string prop = null)
         {
             if (EqualityComparer<T>.Default.Equals(storage, value))
@@ -30,6 +31,7 @@ namespace MonkeyHubApp.ViewModels
 
             return true;
         }
+
         protected virtual void OnPropertyChanged([CallerMemberName]string prop = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
@@ -51,6 +53,17 @@ namespace MonkeyHubApp.ViewModels
                 page.BindingContext = viewModel;            
 
             await Application.Current.MainPage.Navigation.PushAsync(page);
+        }
+
+
+        public async Task MessegerAlert(string title, string message, string cancel)
+        {
+            await Application.Current.MainPage.DisplayAlert(title, message, cancel);
+        }
+
+        public async Task MessegerAlert(string title, string message, string accept, string cancel)
+        {
+            await Application.Current.MainPage.DisplayAlert(title, message, accept, cancel);
         }
     }
 }
