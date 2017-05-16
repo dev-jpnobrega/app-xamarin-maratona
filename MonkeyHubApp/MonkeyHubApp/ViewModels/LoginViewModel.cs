@@ -37,21 +37,26 @@ namespace MonkeyHubApp.ViewModels
 
         private async void ExecuteSignUpCommand()
         {
-            await MessegerAlert("MónkeyHubApp", "Sign Up ainda não está implementado.", "OK");
+            await MessegerAlert("MonkeyHubApp", "Sign Up ainda não está implementado.", "OK");
         }
-
 
         private void RemovePageFromStack()
         {
             INavigation cs;
-          //  var existingPage = cs.NavigationStack.ToList();
-           
+            //  var existingPage = cs.NavigationStack.ToList();
+
         }
+
 
         public async Task<bool> LoginAsync()
         {
+            bool r = false;
+            r = Settings.IsLoggedIn;
+
             if (!Settings.IsLoggedIn)
-                await _azureService.LoginAsync();
+               r = await _azureService.LoginAsync();
+
+            if (!r) return false;
 
             Newtonsoft.Json.Linq.JToken j = await _azureService.GetInfoProvider("/.auth/me");
             Settings.TokenAuthFacebook = j[0].Value<string>("access_token");

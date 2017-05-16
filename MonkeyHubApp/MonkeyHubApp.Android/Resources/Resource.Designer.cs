@@ -26,6 +26,7 @@ namespace MonkeyHubApp.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Gcm.Client.Resource.String.library_name = global::MonkeyHubApp.Droid.Resource.String.library_name;
 			global::ModernHttpClient.Resource.String.library_name = global::MonkeyHubApp.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::MonkeyHubApp.Droid.Resource.Attribute.actionBarSize;
 		}

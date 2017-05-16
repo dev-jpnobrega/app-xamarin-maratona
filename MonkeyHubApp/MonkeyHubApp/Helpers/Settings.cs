@@ -14,6 +14,9 @@ namespace MonkeyHubApp.Helpers
         const string AuthTokenKey = "authtoken";
         static readonly string AuthTokenDefault = string.Empty;
 
+        
+        public static string UrlAppAzure = "https://maratonaxamarinsocialplugin.azurewebsites.net";
+        public static string UrlPushAzure = "http://xamarinmaratona4.azurewebsites.net";
         public static string AuthToken
         {
             get

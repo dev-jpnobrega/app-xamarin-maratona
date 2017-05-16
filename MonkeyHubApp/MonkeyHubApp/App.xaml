@@ -10,7 +10,7 @@
             <Font x:Key="MyFont">Small</Font>
 
             <Style x:Key="Title" TargetType="Label">
-                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="TextColor" Value="#b21404" />
                 <Setter Property="FontSize" Value="Large" />
             </Style>
 
@@ -19,6 +19,12 @@
                 <Setter Property="FontSize" Value="Small" />
             </Style>
 
+
+            <Style x:Key="BTDefault" TargetType="Button">
+                <Setter Property="Font" Value="{StaticResource MyFont}" />
+                <Setter Property="BorderRadius" Value="6" />
+                <Setter Property="BorderColor" Value="#FF0000" />
+            </Style>
 
             <Style x:Key="btDanger" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="Black" />
