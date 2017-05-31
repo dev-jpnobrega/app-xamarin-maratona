@@ -12,7 +12,9 @@ namespace MonkeyHubApp
             InitializeComponent();
 
             var monkeyHubApiService = DependencyService.Get<IMonkeyHubApiService>();
-            this.BindingContext = new ViewModels.MainViewModel(monkeyHubApiService);
+            var facebookApiService = DependencyService.Get<IFacebookService>();
+
+            this.BindingContext = new ViewModels.MainViewModel(monkeyHubApiService, facebookApiService);
         }
         protected override void OnAppearing()
         {

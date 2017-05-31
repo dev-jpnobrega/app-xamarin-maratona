@@ -2,20 +2,11 @@
 
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 
-
 using Gcm.Client;
-using Microsoft.WindowsAzure.MobileServices;
 using MonkeyHubApp.Droid.Services;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-
+using FormsPlugin.Iconize.Droid;
 
 [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
 [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -45,13 +36,32 @@ namespace MonkeyHubApp.Droid
         protected override void OnCreate(Bundle bundle)
         {
             instance = this;
-
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
+           // IconControls.Init(Resource.Id.toolbar, Resource.Id.tabs);
+          
 
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
+
+            IconControls.Init(Resource.Layout.Toolbar, Resource.Layout.Tabbar);
+            TabLayoutResource = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
+
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.EntypoPlusModule())
+                                .With(new Plugin.Iconize.Fonts.FontAwesomeModule())
+                                .With(new Plugin.Iconize.Fonts.IoniconsModule())
+                                .With(new Plugin.Iconize.Fonts.MaterialModule())
+                                .With(new Plugin.Iconize.Fonts.MeteoconsModule())
+                                .With(new Plugin.Iconize.Fonts.SimpleLineIconsModule())
+                                .With(new Plugin.Iconize.Fonts.TypiconsModule())
+                                .With(new Plugin.Iconize.Fonts.WeatherIconsModule());
+
+
+   
+
+           
 
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 

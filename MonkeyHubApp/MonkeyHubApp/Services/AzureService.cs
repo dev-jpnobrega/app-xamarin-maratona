@@ -16,7 +16,7 @@ namespace MonkeyHubApp.Services
 {
     public class AzureService
     {
-        static readonly string AppUrl = "https://maratonaxamarinsocialplugin.azurewebsites.net";
+        static readonly string AppUrl = Settings.UrlAppAzure;
 
         public MobileServiceClient Client { get; set; } = null;
 
@@ -63,7 +63,8 @@ namespace MonkeyHubApp.Services
 
 
         public async Task<Newtonsoft.Json.Linq.JToken> GetInfoProvider(string path)
-        {
+        { 
+            Initialize();
             try
             {
                 return await Client.InvokeApiAsync(path, System.Net.Http.HttpMethod.Get, null);

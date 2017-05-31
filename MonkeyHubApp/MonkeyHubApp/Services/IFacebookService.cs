@@ -1,10 +1,13 @@
 ﻿using MonkeyHubApp.Models;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace MonkeyHubApp.Services
 {
-    interface IFacebookService
+    public interface IFacebookService
     {
-        Task<User> GetPublicPerfil(string accessToken);
+        Task<UserFacebook> GetPublicPerfil(string accessToken);
+
+        Task<ImageSource> GetImageUser(string uri);
     }
 }

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MonkeyHubApp.Views.MenuDraw" Padding="0,0,0,0"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize" 
+             xmlns:imagecircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             Title="Welcome Monkeys">
+    <StackLayout >
+        
+        <ListView x:Name="ListViewMenu" ItemsSource="{Binding MenuItens}" HasUnevenRows="true" >
+            <ListView.Header>
+                <Grid BackgroundColor="#690eba">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <imagecircle:CircleImage Source="{Binding ImageUser}" Grid.Column="1" Grid.Row="1"  Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center">
+                        <imagecircle:CircleImage.WidthRequest>
+                            <OnPlatform x:TypeArguments="x:Double"
+                                          iOS="55"
+                                          Android="100"
+                                          WinPhone="75"/>
+                        </imagecircle:CircleImage.WidthRequest>
+                        <imagecircle:CircleImage.HeightRequest>
+                            <OnPlatform x:TypeArguments="x:Double"
+                                              iOS="55"
+                                              Android="100"
+                                              WinPhone="75"/>
+                        </imagecircle:CircleImage.HeightRequest>
+                    </imagecircle:CircleImage>
+
+                    <Label Text="{Binding Welcome}" Grid.Column="1" Grid.Row="2" FontSize="Small" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand" >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <iconize:IconImage Grid.Column="0" Grid.Row="0" VerticalOptions="Start" Icon="{Binding Icon}" IconSize="25" IconColor="Black" />
+                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Title}" Style="{StaticResource MenuItem}" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" />
+                            </Grid>
+                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

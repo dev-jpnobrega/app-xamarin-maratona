@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 using MonkeyHubApp.Models;
+using Xamarin.Forms;
 
 [assembly: Xamarin.Forms.Dependency(typeof(MonkeyHubApp.Services.FacebookService))]
 namespace MonkeyHubApp.Services
@@ -31,7 +32,7 @@ namespace MonkeyHubApp.Services
 
 
 
-        public async Task<User> GetPublicPerfil(string accessToken)
+        public async Task<UserFacebook> GetPublicPerfil(string accessToken)
         {
             var response = await HttpClient.GetAsync($"me?access_token={accessToken}");
 
@@ -41,13 +42,17 @@ namespace MonkeyHubApp.Services
                 {
                     string ss = await new StreamReader(responseStream).ReadToEndAsync().ConfigureAwait(false);
 
-                    User u = JsonConvert.DeserializeObject<User>(ss);
-                    u.UrlPicture = $"https://graph.facebook.com/{u.UID}/picture/";
+                    UserFacebook u = JsonConvert.DeserializeObject<UserFacebook>(ss);
+                    u.UrlPicture = $"https://graph.facebook.com/{u.UID}/picture?type=large";
                     return u;
                 }
             }
 
             return null;
         }
+
+
+        public async Task<ImageSource> GetImageUser(string uri) =>
+            await Task.Factory.StartNew(() => ImageSource.FromUri(new Uri(uri)));
     }
 }

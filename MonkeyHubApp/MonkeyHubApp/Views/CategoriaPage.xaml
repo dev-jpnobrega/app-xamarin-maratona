@@ -8,8 +8,7 @@
         ItemTappedCommand="{Binding ShowContentCommand}"
 		HasUnevenRows="true"
         SeparatorVisibility="None" 
-		ItemsSource="{Binding Contents}" 
-		>
+		ItemsSource="{Binding Contents}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

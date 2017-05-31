@@ -12,6 +12,8 @@ namespace MonkeyHubApp.ViewModels
     public class MainViewModel: BaseViewModel
     {
         private readonly IMonkeyHubApiService _iMonkeyHubApiService;
+        private readonly IFacebookService _iFacebookService;
+
 
         public ObservableCollection<Tag> Results { get; set; }
 
@@ -19,14 +21,17 @@ namespace MonkeyHubApp.ViewModels
         public Command AboutCommand { get; }
         public Command<Tag> ShowCategoriaCommand { get; }
 
-        public MainViewModel(IMonkeyHubApiService IMonkeyHubApiService)
+        public MainViewModel(IMonkeyHubApiService IMonkeyHubApiService, IFacebookService iFacebookService)
         {
             _iMonkeyHubApiService = IMonkeyHubApiService;
+            _iFacebookService = iFacebookService;
 
             SearchCommand = new Command(ExecuteSearchCommand);
             AboutCommand = new Command(ExecuteAboutCommand);
             ShowCategoriaCommand = new Command<Tag>(ExecuteShowCategoriaCommand);
-            
+
+            Title = "Bem vindo " + User.FirstName;
+           
             Results = new ObservableCollection<Tag>();
         }
         
@@ -47,7 +52,7 @@ namespace MonkeyHubApp.ViewModels
 
 
         public async Task LoadAsync()
-        {
+        {         
             var tags = await _iMonkeyHubApiService.GetTagsAsync();
 
             Results.Clear();

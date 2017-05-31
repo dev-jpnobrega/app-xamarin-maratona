@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using MonkeyHubApp.Helpers;
 using MonkeyHubApp.Models;
 using MonkeyHubApp.Services;
+using MonkeyHubApp.Views;
 
 namespace MonkeyHubApp.ViewModels
 {
@@ -19,19 +20,22 @@ namespace MonkeyHubApp.ViewModels
         public LoginViewModel()
         {
             Title = "Monkey Hub ";
+            IsBusy = false;
+
             LoginCommand = new Command(ExecuteLoginCommand);
             SignUpCommand = new Command(ExecuteSignUpCommand);
-
-
+            
             _iFacebookService = DependencyService.Get<IFacebookService>();
             _azureService = DependencyService.Get<AzureService>();
         }
 
         private async void ExecuteLoginCommand()
         {
+            IsBusy = true;
             if (await LoginAsync())
             {
-                await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+                IsBusy = false;
+                Application.Current.MainPage = new MainDetailPage();   
             }
         }
 
@@ -61,9 +65,14 @@ namespace MonkeyHubApp.ViewModels
             Newtonsoft.Json.Linq.JToken j = await _azureService.GetInfoProvider("/.auth/me");
             Settings.TokenAuthFacebook = j[0].Value<string>("access_token");
 
-            User s = await _iFacebookService.GetPublicPerfil(Settings.TokenAuthFacebook);
+            UserFacebook us = await _iFacebookService.GetPublicPerfil(Settings.TokenAuthFacebook);
+            User.Email = us.Email;
+            User.UrlPicture = us.UrlPicture;
+            User.UID = us.UID;
+            User.FirstName = us.FirstName;
+            User.LastName = us.LastName;
 
-            return false;
+            return true;
         }
     }
 }

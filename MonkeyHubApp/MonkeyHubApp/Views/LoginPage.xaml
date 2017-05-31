@@ -2,33 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MonkeyHubApp.Views.LoginPage"
-             Title="{Binding Title}">
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             Title="{Binding Title}" BackgroundImage="backlogin.png" NavigationPage.HasNavigationBar="false" IsBusy="{Binding IsBusy}">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Sign Up" Command="{Binding SignUpCommand}"></ToolbarItem>
-    </ContentPage.ToolbarItems>
-    <StackLayout Padding="10,10,10,10"  VerticalOptions="StartAndExpand">
+   
 
+    <StackLayout Margin="0,40,0,0" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Padding="10">
+        <StackLayout Margin="0,0,0,0" VerticalOptions="Start" Padding="10">
+            <iconize:IconImage  VerticalOptions="Center" Icon="fa-skyatlas" IconSize="35" IconColor="Transparent" />
+            <Label Text="Welcome Monkeys" VerticalOptions="Center" VerticalTextAlignment="Center" Style="{StaticResource TitleApresentation}"></Label>
+        </StackLayout>
+        <StackLayout Margin="0,20,0,0" VerticalOptions="CenterAndExpand" Padding="10">
 
-        <StackLayout VerticalOptions="CenterAndExpand">
-            <Label Text="Entre com login e senha" Style="{StaticResource SubTitle}"></Label>
-            <Entry Placeholder="E-mail" ></Entry>
-            <Entry Placeholder="Senha"></Entry>
-
-            <Button Style="{StaticResource BTDefault}" 
-                Command="{Binding LoginCommand}" 
-                Text="Entrar"
-                BackgroundColor="#b21404" TextColor="White">
+            <Button Margin="0,0,0,0" VerticalOptions="Center" Command="{Binding LoginCommand}"
+                    BorderColor="#FFFFFF" BorderWidth="1" 
+                    BackgroundColor="Transparent" TextColor="White" Text="Entrar com Facebook">
+                <Button.BorderRadius>
+                    <!-- HACK: fixes a bug where border doesn't get draw unless there is a radius. -->
+                    <OnPlatform x:TypeArguments="x:Int32">
+                        <OnPlatform.Android>1</OnPlatform.Android>
+                    </OnPlatform>
+                </Button.BorderRadius>
             </Button>
         </StackLayout>
-        <StackLayout VerticalOptions="EndAndExpand">
-            <Label Text="Login com facebook" Style="{StaticResource SubTitle}"></Label>
-            <Button Style="{StaticResource BTDefault}" 
-                Command="{Binding LoginCommand}" 
-                Text="Login com Facebook"
-                BackgroundColor="#2b7bbe" TextColor="White">
-            </Button>
-        </StackLayout>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}"></ActivityIndicator>
     </StackLayout>
+   
 
 </ContentPage>

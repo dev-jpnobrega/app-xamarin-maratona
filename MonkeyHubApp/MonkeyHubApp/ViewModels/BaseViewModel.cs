@@ -18,7 +18,15 @@ namespace MonkeyHubApp.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-                
+
+        private bool _isBusy;
+
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value); }
+        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName]string prop = null)

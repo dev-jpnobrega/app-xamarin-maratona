@@ -10,8 +10,8 @@
             <Font x:Key="MyFont">Small</Font>
 
             <Style x:Key="Title" TargetType="Label">
-                <Setter Property="TextColor" Value="#b21404" />
-                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="#690eba" />
+                <Setter Property="FontSize" Value="Medium" />
             </Style>
 
             <Style x:Key="SubTitle" TargetType="Label">
@@ -19,7 +19,16 @@
                 <Setter Property="FontSize" Value="Small" />
             </Style>
 
-
+            <Style x:Key="MenuItem" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            
+            <Style x:Key="TitleApresentation" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+            
             <Style x:Key="BTDefault" TargetType="Button">
                 <Setter Property="Font" Value="{StaticResource MyFont}" />
                 <Setter Property="BorderRadius" Value="6" />
@@ -30,6 +39,9 @@
                 <Setter Property="BackgroundColor" Value="Black" />
                 <Setter Property="Font" Value="{StaticResource MyFont}" />
             </Style>
+            
+            
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

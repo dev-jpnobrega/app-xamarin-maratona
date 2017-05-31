@@ -2,14 +2,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MonkeyHubApp"
-             x:Class="MonkeyHubApp.MainPage" Title="Pagina Inicial"
-             xmlns:controls="clr-namespace:MonkeyHubApp.Controls;assembly:MonkeyHubApp">
+             x:Class="MonkeyHubApp.MainPage" 
+             xmlns:controls="clr-namespace:MonkeyHubApp.Controls;assembly:MonkeyHubApp" 
+             Title="{Binding Title}" NavigationPage.HasBackButton="False" >
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="About" Command="{Binding AboutCommand}"></ToolbarItem>
         <ToolbarItem Text="Buscar" Command="{Binding SearchCommand}"></ToolbarItem>
+        <ToolbarItem Text="Teste 1" Command="{Binding AboutCommand}"></ToolbarItem>
+        <ToolbarItem Text="Teste 2" Command="{Binding AboutCommand}"></ToolbarItem>
+        <ToolbarItem Text="Teste 3" Command="{Binding AboutCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
-
+-->
     <ContentPage.Resources>
       
     </ContentPage.Resources>    
@@ -23,6 +27,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="20">
+                         
                             <Label Text="{Binding Name}" Style="{StaticResource Title}"></Label>
                             <Label Text="{Binding Description}" Style="{StaticResource SubTitle}"></Label>
                         </StackLayout>

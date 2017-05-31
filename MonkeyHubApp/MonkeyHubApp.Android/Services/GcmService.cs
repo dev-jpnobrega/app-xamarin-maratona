@@ -50,8 +50,8 @@ namespace MonkeyHubApp.Droid.Services
         {
             try
             {
-                const string templateBodyGCM =
-               "{\"data\":{\"message\":\"$(messageParam)\"}}";
+                const string templateBodyGCM = "{\"data\":{\"message\":\"$(messageParam)\"}}";
+
                 JObject templates = new JObject();
                 templates["genericMessage"] =
                     new JObject
